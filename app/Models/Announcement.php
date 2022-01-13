@@ -9,5 +9,13 @@ class Announcement extends Model
 {
     use HasFactory;
 
-    protected $guarded=[];
+    public function user(){
+    	return $this->belongsTo(User::class,'user_id');
+    }
+
+    protected $fillable = [
+        'title',
+        'content',
+        
+    ];
 }

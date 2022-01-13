@@ -1,69 +1,48 @@
 <?php
 
-namespace App\Http\Controllers\announcement;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Announcement;
+use Datatables;
 
 class AnnouncementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //
+
+	public function create()
+    {
+                                    //Category ka model name
+        return view('announcements.addannouncement');  //compact nt UI htl hlan htae
+        //$username=auth()->user()->name;
+        //return view('announcements.addannouncement',compact('username'));
+    }
+
     public function index()
     {
         //
         $list =  Announcement::all();
-        return view('announcement.list', compact('list'));
+        //return view('eg', compact('list'));
+        return view('announcements.announcementlist', compact('list'));
+        //return view('eg');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function store(Request $request){
+    	$announcement = new Announcement;
+    	$announcement->title=request()->title;
+    	$announcement->content=request()->content;
+        //$announcement->user_id=auth()->user()->id;
+        $announcement->user_id=1;    //login win lr tet user Id ko hidden field yuu ml
+    	$announcement->save();
+
+    	return redirect('index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $list = Announcement::find($id);
-
-        return view('announcement.list', compact('list'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $edit = Announcement::find($id);
-        return view('announcement.update', compact('edit'));
+        $edit=Announcement::find($id);
+        
+        return view('announcements.updateannouncement',compact('edit'));
     }
 
     /**
@@ -78,20 +57,16 @@ class AnnouncementController extends Controller
         Announcement::findOrFail($id)->update([
             'title'=>request()->title,
             'content'=>request()->content,
+            //'user_id'=>auth()->user()->id,
         ]);
         return redirect('/announcement/list')->with('success','Announcement has been updated successfully!!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function delete($id)
+     public function show($id)
     {
-        $delete = Announcement::find($id);
-        $delete -> delete();
-        return back();
+        $list = Announcement::find($id);
+
+        return view('announcement.list', compact('list'));
     }
+
 }
