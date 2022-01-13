@@ -2,7 +2,7 @@
 
 @section("content")
 
-            <div class="app-main__outer">
+            
                 @if($errors->any())
                     <div class="alert alert-warning">
                     <ol>
@@ -12,14 +12,14 @@
                     </ol>
                     </div>
                 @endif
-                    <div class="app-main__inner">
+                    
                          <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Announcement Form</h5>
+                                    <div class="card-body"><h5 class="card-title">Announcement Update Form</h5>
                                         <form class="" method="post" action="{{url('/announcements/update/'.$edit['id'])}}">
                                             @csrf
                                             <div class="position-relative row form-group"><label for="admin" class="col-sm-2 col-form-label">Admin</label>
                                                 <div class="col-sm-10">
-                                                    <input name="admin" id="admin" value="Admin" type="text" class="form-control">
+                                                    <input name="admin" id="admin" value="Admin" type="text" class="form-control" disabled="disabled">
 
                                                     <p ></p>
                                                 </div>
@@ -83,7 +83,6 @@
                             </div>
                         </div>
                     </div>    </div>
-        </div>
-    </div>
+        
 @endsection
 

@@ -10,7 +10,7 @@
                                             @csrf
                                             <div class="position-relative row form-group"><label for="admin" class="col-sm-2 col-form-label">Admin</label>
                                                 <div class="col-sm-10">
-                                                    <input name="admin" id="admin" value="Admin" type="text" class="form-control">
+                                                    <input name="admin" id="admin" value="Admin" type="text" class="form-control" disabled="disabled">
 
                                                     <p ></p>
                                                 </div>
