@@ -187,7 +187,7 @@
                                  </a>
                                  <ul>
                                      <li>
-                                         <a href="#" class="textstyle">
+                                         <a href="{{ url('/announcement/list') }}" class="textstyle">
                                             <i class="metismenu-icon">
                                             </i>Announcement Lists
                                          </a>
