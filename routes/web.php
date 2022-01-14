@@ -24,6 +24,8 @@ Route::post('/adminlogin/checklogin', [App\Http\Controllers\AdminController::cla
 
 
 
+Route::get('/leaveRequestForm/{newLeave}/{date}',[LeaveController::class,'addNew']);
+Route::post('/leaveRequestForm/{newLeave}/{date}',[LeaveController::class,'save']);
 Route::get('/leaveRequestForm',[LeaveController::class,'show']);
 Route::post('/leaveRequestForm',[LeaveController::class,'save']);
 

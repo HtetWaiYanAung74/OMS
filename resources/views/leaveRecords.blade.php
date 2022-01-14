@@ -29,10 +29,12 @@
                 
             </form>
     </div>
-    <div class="col-md-6"></div>
-    <div class="col-md-2">
+    <div class="col-md-5"></div>
+    <div class="col-md-3">
         @if(count($leaveRecords)!=0)
-        <a href="{{url("/leaveRecord/edit/$today")}}" type="button" class="btn btn-primary">Edit Leave</a>
+        <a href="{{url("/leaveRecord/edit/$today")}}" type="button" class="btn btn-primary mr-2">Edit Leave</a>
+        <a href="{{url("/leaveRequestForm/newLeave=true/$today")}}" type="button" class="btn btn-primary mr-2">AddNew</a>
+        
         @endif
     </div>
 </div>
@@ -69,7 +71,7 @@
         style="background-color:yellow;"
         
         @else
-        style="background-color:green;"
+        style="background-color:lightgreen;"
         @endif   >{{$leaveRecord->status}}</span> 
      
     </td>
@@ -81,8 +83,10 @@
 
 
 </table>
+   
 
 </div>
+ 
 
 @endsection
 

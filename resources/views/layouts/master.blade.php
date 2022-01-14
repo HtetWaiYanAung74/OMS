@@ -335,9 +335,9 @@
          
      </div>
  </div>
- <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+ <!-- <script src="http://maps.google.com/maps/api/js?sensor=true"></script> -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
- <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+ <!-- <script src="http://maps.google.com/maps/api/js?sensor=true"></script> -->
  <script type="text/javascript" src="{{asset('adminindex/scripts/main.js')}}"></script>
  {{-- index script --}}
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
