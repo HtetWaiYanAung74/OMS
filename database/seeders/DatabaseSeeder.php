@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
             'fname'=>'a',
             'lname'=>'a',
             'username'=>'aa',
-            'employeeid'=>'1',
-            'email'=>'a@gmail.com',
+            'employeeid'=>'201',
+            'email'=>'thawtar13799@gmail.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'role'=>'Admin',
             'remember_token' => Str::random(10),

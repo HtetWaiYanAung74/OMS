@@ -52,46 +52,46 @@ class AdminController extends Controller
 
 
 //forgotpwd
-   public function forgotpwd()
-    {
-        return view('forgotpwd');
+//    public function forgotpwd()
+//     {
+//         return view('forgotpwd');
        
-   }
+//    }
 
 
-   function checkemail(Request $request)
-   {
-       $this->validate($request,[
-           'email'=>'required'  
-       ]);
+//    function checkemail(Request $request)
+//    {
+//        $this->validate($request,[
+//            'email'=>'required'  
+//        ]);
 
-       $user_data= [
-           'email' => $request->get('email')
-       ];
+//        $user_data1= [
+//            'email' => $request->get('email')
+//        ];
 
-       if(Auth::attempt($user_data))
-       {
+//        if(Auth::attempt($user_data1))
+//        {
 
-        $details = [
-            'title'=> 'One Time Password from Office Management System',
-            'body'=>'If you forgot your password to login,Please use this OTP,and then set new password.
-                    Your One Time Password : 123456'
-                ];
+//         $details = [
+//             'title'=> 'One Time Password from Office Management System',
+//             'body'=>'If you forgot your password to login,Please use this OTP,and then set new password.
+//                     Your One Time Password : 123456'
+//                 ];
     
-        Mail::to($user_data) ->send(new ForgotpwdEmail($details));   
-        return redirect('forgotpwd/otp');
+//         Mail::to($user_data1)->send(new ForgotpwdEmail($details));   
+//         return redirect('/forgotpwd/otp');
 
-       }else
-       {
-            return back()->with('error','Wrong Email');
-       }
-    }
+//        }else
+//        {
+//             return back()->with('error','Wrong Email');
+//        }
+//     }
 
 
-    function otp()
-   {
-     return view('otp');
-   }
+//     function otpform()
+//    {
+//      return view('otpform');
+//    }
 
 
 }

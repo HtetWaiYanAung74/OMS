@@ -36,6 +36,9 @@ Route::get('/adminlogin/logout', [App\Http\Controllers\AdminController::class, '
 
 //Forgot Password
 
-Route::get('/forgotpwd', [App\Http\Controllers\AdminController::class, 'forgotpwd']);
-Route::post('/forgotpwd/checkemail', [App\Http\Controllers\AdminController::class, 'checkemail']);
-Route::get('/forgotpwd/otp', [App\Http\Controllers\AdminController::class, 'otp']);
+Route::get('/forgotpwd', [App\Http\Controllers\EmailSendController::class, 'forgotpwd']);
+Route::post('/forgotpwd/checkemail', [App\Http\Controllers\EmailSendController::class, 'checkemail']);
+Route::get('/forgotpwd/otpform', [App\Http\Controllers\EmailSendController::class, 'otpform']);
+
+
+//One Time Password and Set New Password
