@@ -26,9 +26,9 @@ Route::get('adminlogin/successlogin', [App\Http\Controllers\AdminController::cla
 Route::get('/adminlogin/logout', [App\Http\Controllers\AdminController::class, 'logout']);
 
 //Account view/Update
-Route::get('/accountinfo', [App\Http\Controllers\AccountController::class, 'accountinfo']);
-Route::get('/accountinfo/update', [App\Http\Controllers\AccountController::class, 'edit']);
-Route::post('/accountinfo/update', [App\Http\Controllers\AccountController::class, 'update']);
+Route::get('/accountinfo/{id}', [App\Http\Controllers\AccountController::class, 'accountinfo'])->name('accountinfo');
+Route::get('/accountinfo/update/{id}', [App\Http\Controllers\AccountController::class, 'edit']);
+Route::post('/accountinfo/update/{id}', [App\Http\Controllers\AccountController::class, 'update']);
  
 
  

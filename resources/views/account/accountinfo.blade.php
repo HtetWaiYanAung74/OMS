@@ -13,25 +13,25 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="employeeId" class="col-md-4 col-4 col-form-label text-md-end " style="font-weight:bold;">{{ __('Employee ID :') }}</label>
-                            <label class="col-md-6 col-6 col-form-label">{{ Auth::user()->employeeid}}</label>
+                            <label for="employeeid" class="col-md-4 col-4 col-form-label text-md-end " style="font-weight:bold;">{{ __('Employee ID :') }}</label>
+                            <label class="col-md-6 col-6 col-form-label"> {{ $user->employeeid}}<label>
                             
                         </div>
 							
                         <div class="row mb-3 ">
-						 <label for="firstname" class="col-md-4 col-4 col-form-label text-md-end" style="font-weight:bold;">{{ __('FirstName :') }}</label>
+						 <label for="fname" class="col-md-4 col-4 col-form-label text-md-end" style="font-weight:bold;">{{ __('FirstName :') }}</label>
 
                             <label class="col-md-6 col-6 col-form-label ">
-                            {{ Auth::user()->fname}}
+                            {{ $user->fname}}
                             </label>
                         </div>
 
 
                         <div class="row mb-3">
-                            <label for="lastname" class="col-md-4 col-4 col-form-label text-md-end" style="font-weight:bold;">{{ __('LastName :') }}</label>
+                            <label for="lname" class="col-md-4 col-4 col-form-label text-md-end" style="font-weight:bold;">{{ __('LastName :') }}</label>
 
                             <label class="col-md-6 col-6 col-form-label">
-                            {{ Auth::user()->lname }}
+                            {{ $user->lname }}
                             </label>
                         </div>
 
@@ -39,7 +39,7 @@
                             <label for="username" class="col-md-4 col-4 col-form-label text-md-end" style="font-weight:bold;">{{ __('Username :') }}</label>
 
                             <label class="col-md-6 col-6 col-form-label">
-                            {{ Auth::user()->username }}
+                            {{ $user->username }}
                             </label>
                         </div>
 
@@ -47,7 +47,7 @@
                             <label for="email" class="col-md-4 col-4 col-form-label text-md-end" style="font-weight:bold;">{{ __('E-Mail :') }}</label>
 
                             <label class="col-md-6 col-6 col-form-label ">
-                            {{ Auth::user()->email}}
+                            {{ $user->email}}
                             </label>
                         </div>
 
@@ -57,7 +57,7 @@
                             <label for="password" class="col-md-4 col-4 col-form-label text-md-end" style="font-weight:bold;">{{ __('Password :') }}</label>
 
                             <label class="col-md-6 col-6 col-form-label">
-                            {{ Auth::user()->password}}
+                            {{ $user->password}}
                             </label>
                         </div>
 
@@ -65,7 +65,7 @@
                             <label for="role" class="col-md-4 col-4 col-form-label text-md-end" style="font-weight:bold;">{{ __('Role :') }}</label>
 
                             <label class="col-md-6 col-6 col-form-label">
-                            {{ Auth::user()->role}}
+                            {{ $user->role}}
                             </label>
                         </div>
 
@@ -74,7 +74,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4 justify-content-center">
                                 
-                                <a class="btn btn-primary" href="{{url("/accountinfo/update")}}">{{ __('Edit') }}</a>
+                                <a class="btn btn-primary" href="{{url("/accountinfo/update/$user->id")}}">{{ __('Edit') }}</a>
 				 				&nbsp;&nbsp;
 					            <a class="btn btn-danger" href="{{url("/adminlogin/successlogin")}}"> {{ __('Cancel') }}</a>
                             </div>

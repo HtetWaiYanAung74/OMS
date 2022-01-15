@@ -9,31 +9,31 @@ use Illuminate\Validation\Rule;
 
 class AccountController extends Controller
 {
-    public function accountinfo()
-    {
-        return view('account.accountinfo');
-         
+    public function accountinfo($id)
+    {  
+        $user = User::find($id);
+        return view('account.accountinfo',compact('user'));
     }
-    public function edit()
-    {
-        $userId = Auth::id();
-        $user = User::findOrFail($userId);
-       return view('account.accountinfoupdate',compact('user'));
+    public function edit($id)
+    { 
+ 
+        $user = User::find($id);
+       return view('account.accountinfoupdate',compact('user'));;
+       
+    }
+    public function update(Request $request,$id)
+    { 
+            User::findOrFail($id)->update([
     
-    }
-    public function update(Request $request)
-    {
-             $user = Auth::user();
-            
-            $user->fname = request()->input('fname');
-            $user->lname = request()->input('lname');
-            $user->username = request()->input('username');
-            $user->email =  request()->input('email');
-            $user->password = \Hash::make($request->input('password'));
-            $user->save();
-            
-         return redirect('/accountinfo')->with('success','Update Successful.');
-
+                'fname'=>request()->fname,
+                'lname'=>request()->lname,
+                'username' =>request()->username,
+                'email' =>request()->email,
+                'password' =>request()->password,
+                
+            ]);
+        
+         return back()->with('info',' Update successful.');
          
     }
 
