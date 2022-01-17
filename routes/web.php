@@ -21,10 +21,9 @@ Route::get('/', function () {
 
 //Attendance Add
 Route::get('/attendance/attendanceForm',[AttendanceController::class,'create']);
-Route::post('/attendance/attendanceForm',[
-    AttendanceController::class, 'store']);
+Route::post('/attendance/attendanceForm',[AttendanceController::class, 'store']);
 
-  //  Auth::routes();
+    Auth::routes();
     // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
     // Route::get('/admin_home',[App\Http\Controllers\AnnouncementController::class, 'index'])->name('admin_home');

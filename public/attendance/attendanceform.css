@@ -13,17 +13,12 @@ button{
     color:#fff;
     border-radius: 20px;
 }
-.without_ampm::-webkit-datetime-edit-ampm-field {
-    display: none;
-  }
-  input[type=time]::-webkit-clear-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -o-appearance: none;
-    -ms-appearance:none;
-    appearance: none;
-    margin: -10px; 
-  }
+.btn1{
+    width:80px;
+    height:40px;
+    float: right;
+    background-color:rgba(0,1, 0,0.5);
+}
  
 
 

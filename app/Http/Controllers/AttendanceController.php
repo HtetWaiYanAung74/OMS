@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Dailyattendance;
+use App\Models\user;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Rule;
+
 
 class AttendanceController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['store','create']);
+    }
 
     public function create(){
         return view('attendance.attendanceForm');
@@ -31,7 +40,7 @@ class AttendanceController extends Controller
         }
     
         $dailyattendance=new Dailyattendance;
-        $dailyattendance->userid=request()->employeeId;
+        $dailyattendance->userid=request()->employeeID;
         $dailyattendance->date=request()->attendanceDate;
         $dailyattendance->checkin=request()->checkIn;
         $dailyattendance->checkout=request()->checkOut;
