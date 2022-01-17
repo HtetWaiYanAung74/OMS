@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
@@ -23,13 +24,24 @@ class AccountController extends Controller
     }
     public function update(Request $request,$id)
     { 
-            User::findOrFail($id)->update([
+        $validator=validator(request()->all(),[
+            'fname'=>'required',
+            'lname'=>'required',
+            'username'=>'required',
+            'email'=>'required|email|max:255',
+            'password'=>'required|alphaNum|min:3'
+        ]);
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
+         User::findOrFail($id)->update([
     
                 'fname'=>request()->fname,
                 'lname'=>request()->lname,
                 'username' =>request()->username,
                 'email' =>request()->email,
-                'password' =>request()->password,
+                'password' =>Hash::make(request()->password),
                 
             ]);
         

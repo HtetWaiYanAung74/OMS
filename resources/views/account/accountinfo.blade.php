@@ -1,7 +1,8 @@
+
 @extends('layouts.master')
 
 @section("content")
-
+ 
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -57,7 +58,7 @@
                             <label for="password" class="col-md-4 col-4 col-form-label text-md-end" style="font-weight:bold;">{{ __('Password :') }}</label>
 
                             <label class="col-md-6 col-6 col-form-label">
-                            {{ $user->password}}
+                             {{$user->password}}
                             </label>
                         </div>
 
