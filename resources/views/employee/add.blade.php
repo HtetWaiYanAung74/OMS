@@ -9,7 +9,8 @@
                 <div class="card-header">{{ __('Account Create Form') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action=" {{ url('index/add') }}">
+                    <!-- <form method="POST" action=""> -->
                         @csrf
 
                         <div class="row mb-3">
@@ -31,7 +32,7 @@
                             <label for="lastname" class="col-md-4 col-form-label text-md-end">{{ __('LastName') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname">
+                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}"  required autocomplete="lastname">
 
                                 @error('lastname')
                                     <span class="invalid-feedback" role="alert">
@@ -59,7 +60,7 @@
                             <label for="employee_id" class="col-md-4 col-form-label text-md-end">{{ __('Employee ID') }}</label>
 
                             <div class="col-md-6">
-                                <input id="employee_id" type="text" class="form-control @error('employee_id') is-invalid @enderror" name="employee_id" value="{{ old('employee_id') }}" >
+                                <input id="employee_id" type="text" class="form-control @error('employee_id') is-invalid @enderror" name="employee_id"  value="{{ old('employee_id') }}">
 
                                 @error('employee_id')
                                     <span class="invalid-feedback" role="alert">
@@ -103,7 +104,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                            <select class="form-control" type="role"  name="role"  >
+                            <select class="form-control" type="role"  name="role" value="{{ old('role') }}" >
                                
                             <option>{{ __('Please select role') }}</option>
                                  <option value="leader">{{ __('Leader') }}</option>
@@ -112,11 +113,7 @@
                                  
                             </select>
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                
                             </div>
                         </div>
 
@@ -128,7 +125,7 @@
                                     {{ __('Create') }}
                                 </button>
 
-                                <button type="submit" class="btn btn-danger">
+                                <button type="reset" class="btn btn-danger">
                                     {{ __('Cancel') }}
                                 </button>
                             </div>

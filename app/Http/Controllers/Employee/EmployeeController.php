@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class EmployeeController extends Controller
 {
@@ -26,7 +28,7 @@ class EmployeeController extends Controller
     {
         //
 
-        return view('index.add');
+        return view('employee.add');
     }
 
     /**
@@ -37,16 +39,25 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
+
+        $user= new User();
+
         $validator=validator(request()->all(),[
-            'title' => 'required',
-            'content' => 'required',
-            'category_id' => 'required'
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'username' => 'required',
+            'employee_id' => 'required','unique:users',
+            // 'email' => 'required','unique:user',
+            'email' => 'required',Rule::unique('users')->ignore($user->id),
+            'password' => 'required','string', 'min:4',
+            'role' => 'required'
         ]);
 
         if($validator -> fails()){
             return back()-> withErrors($validator);
         }
-        $user= new User();
+        
         $user->fname=request()->firstname;
         $user->lname=request()->lastname;
         $user->username=request()->username;
@@ -56,7 +67,7 @@ class EmployeeController extends Controller
         $user->role=request()->role;
         $user->save();
 
-        return redirect('/index');
+        return redirect('/index/add')->with('Success','Employee has been successfully added...');
     }
 
     /**

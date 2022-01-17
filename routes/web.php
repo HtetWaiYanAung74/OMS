@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Employee\AddController;
+use App\Http\Controllers\Employee\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +22,12 @@ Route::get('/index', function () {
     return view('layouts.master');
 });
 
-Route::get('/index/add', function () {
-    return view('employee.add');
-});
+// Route::get('/index/add', function () {
+//     return view('employee.add');
+// });
 
-// Route:: get('/index/add',  [AddController::class, 'create' ]);
-// Route:: post('/articles/add',  [ArticleController::class, 'store' ]);
+Route:: get('/index/add',  [EmployeeController::class, 'create' ]);
+Route:: post('/index/add',  [EmployeeController::class, 'store' ]); 
 
 
 Auth::routes();
