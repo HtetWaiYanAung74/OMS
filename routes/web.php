@@ -32,4 +32,5 @@ Auth::routes();
 Route::get('/adminlogin', [App\Http\Controllers\AdminController::class, 'index']);
 Route::post('/adminlogin/checklogin', [App\Http\Controllers\AdminController::class, 'checklogin']);
 Route::get('adminlogin/successlogin', [App\Http\Controllers\AdminController::class, 'successlogin'])->middleware('auth');
+Route::get('announcement/detail/{id}', [App\Http\Controllers\AdminController::class, 'show'])->middleware('auth');
 Route::get('/adminlogin/logout', [App\Http\Controllers\AdminController::class, 'logout']);

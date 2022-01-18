@@ -42,6 +42,11 @@ class AdminController extends Controller
         $announcement = Announcement::latest()->paginate(4);
         return view('successlogin',compact('announcement'));
     }
+    public function show($id){
+
+        $detail = Announcement::find($id);
+        return view('announcement.detail',compact('detail'));
+    }
 
    function logout(){
 
