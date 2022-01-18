@@ -8,6 +8,7 @@ use Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Mail\ForgotpwdEmail;
+use App\Models\Otp;
 
 
 class EmailSendController extends Controller
@@ -27,7 +28,7 @@ class EmailSendController extends Controller
        ]);
 
        $user = User::where('email',$request->get('email'))->first();
-
+       
        if($user != NULL)
        {    
             $number = mt_rand(100000, 999999);
@@ -37,8 +38,31 @@ class EmailSendController extends Controller
                     Your One Time Password : '.$number
                 ];
     
-        Mail::to($user)->send(new ForgotpwdEmail($details));   
-        return redirect('/forgotpwd/otpform');
+        Mail::to($user)->send(new ForgotpwdEmail($details));
+
+        $otp=Otp::where('employeeid',$user->id)->first();
+
+        if($otp == NULL)
+        {
+            $otp1 = new Otp;
+            $otp1->employeeid=$user->id;
+            $otp1->otp=$number;
+    
+            $otp1->save();
+
+        }
+        else{
+
+            Otp::where('id',$otp->id)->update([
+               
+                'employeeid'=>$user->id,
+                'otp'=>$number,
+            ]);
+        }
+        
+        $employeeid = $user->id;
+        return view('otpform',compact('employeeid'));
+        // return redirect('/forgotpwd/otpform');
 
        }else
        {

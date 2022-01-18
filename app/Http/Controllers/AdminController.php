@@ -31,6 +31,7 @@ class AdminController extends Controller
        if(Auth::attempt($user_data))
        {
            return redirect('/adminlogin/successlogin');
+         //     return view('successlogin');
        }else
        {
             return back()->with('error','Wrong Login');
@@ -47,51 +48,6 @@ class AdminController extends Controller
        Auth::logout();
        return redirect('adminlogin');
    }
-
-
-
-
-//forgotpwd
-//    public function forgotpwd()
-//     {
-//         return view('forgotpwd');
-       
-//    }
-
-
-//    function checkemail(Request $request)
-//    {
-//        $this->validate($request,[
-//            'email'=>'required'  
-//        ]);
-
-//        $user_data1= [
-//            'email' => $request->get('email')
-//        ];
-
-//        if(Auth::attempt($user_data1))
-//        {
-
-//         $details = [
-//             'title'=> 'One Time Password from Office Management System',
-//             'body'=>'If you forgot your password to login,Please use this OTP,and then set new password.
-//                     Your One Time Password : 123456'
-//                 ];
-    
-//         Mail::to($user_data1)->send(new ForgotpwdEmail($details));   
-//         return redirect('/forgotpwd/otp');
-
-//        }else
-//        {
-//             return back()->with('error','Wrong Email');
-//        }
-//     }
-
-
-//     function otpform()
-//    {
-//      return view('otpform');
-//    }
 
 
 }

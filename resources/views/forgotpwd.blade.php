@@ -28,7 +28,7 @@ Forgot Password Form
                 </ul>
             </div>
         @endif
-        <form method="post" action="{{ url('/forgotpwd/checkemail')}}">
+        <form method="post" action="{{ url("/forgotpwd/checkemail")}}">
         @csrf
             <div class="form-group">
                 <label>Employee Email</label>

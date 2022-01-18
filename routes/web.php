@@ -42,3 +42,4 @@ Route::get('/forgotpwd/otpform', [App\Http\Controllers\EmailSendController::clas
 
 
 //One Time Password and Set New Password
+Route::post('/otp/checkOTP',[App\Http\Controllers\ResetPasswordController::class, 'checkOTP']);
