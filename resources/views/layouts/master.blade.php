@@ -144,7 +144,7 @@
                                      </a>
                                      <ul>
                                          <li>
-                                             <a href="#" class="textstyle">
+                                             <a href="{{ url("/index/usertable") }}" class="textstyle">
                                                  Employee List
                                              </a>
                                          </li>

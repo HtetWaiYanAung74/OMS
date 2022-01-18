@@ -41,23 +41,35 @@ class EmployeeController extends Controller
     {
         // return $request->all();
 
-        $user= new User();
+       
 
-        $validator=validator(request()->all(),[
+        // $validator=validator(request()->all(),[
+        //     'firstname' => 'required',
+        //     'lastname' => 'required',
+        //     'username' => 'required',
+        //     'employee_id' => 'required','unique:users',
+        //     // 'email' => 'required','unique:user',
+        //     'email' => 'required',Rule::unique('users')->ignore($user->id),
+        //     'password' => 'required','string', 'min:4',
+        //     'role' => 'required'
+        // ]);
+
+        // if($validator -> fails()){
+        //     return back()-> withErrors($validator);
+        // }
+        
+        $validateData= $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
             'username' => 'required',
-            'employee_id' => 'required','unique:users',
+            'employee_id' => 'required|unique:users',
             // 'email' => 'required','unique:user',
-            'email' => 'required',Rule::unique('users')->ignore($user->id),
-            'password' => 'required','string', 'min:4',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4',
             'role' => 'required'
         ]);
 
-        if($validator -> fails()){
-            return back()-> withErrors($validator);
-        }
-        
+        $user= new User();
         $user->fname=request()->firstname;
         $user->lname=request()->lastname;
         $user->username=request()->username;
@@ -67,7 +79,7 @@ class EmployeeController extends Controller
         $user->role=request()->role;
         $user->save();
 
-        return redirect('/index/add')->with('Success','Employee has been successfully added...');
+        return redirect('/index')->with('Success','Employee has been successfully added...');
     }
 
     /**

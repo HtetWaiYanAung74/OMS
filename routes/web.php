@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Employee\EmployeeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,16 @@ Route:: post('/index/add',  [EmployeeController::class, 'store' ]);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Route::get('/index/usertable', function () {
+//     return view('welcome');
+// });
+
+Route::get('/index/usertable',[UserController::class,'show']);
+Route::delete('/index/usertable/delete/{id}',[UserController::class,'destroy'])->name('users.delete');
+
+Route::get('/index/update',[UserController::class,'show']);
+Route::delete('/index/update/delete/{id}',[UserController::class,'destroy'])->name('users.delete');
 
 // Route::get('/index', [ArticleController::class, 'master']);
