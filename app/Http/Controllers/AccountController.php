@@ -19,7 +19,7 @@ class AccountController extends Controller
     { 
  
         $user = User::find($id);
-       return view('account.accountinfoupdate',compact('user'));;
+       return view('account.accountinfoupdate',compact('user'));
        
     }
     public function update(Request $request,$id)
@@ -29,7 +29,7 @@ class AccountController extends Controller
             'lname'=>'required',
             'username'=>'required',
             'email'=>'required|email|max:255',
-            'password'=>'required|alphaNum|min:3'
+             
         ]);
 
         if($validator->fails()){
@@ -47,6 +47,11 @@ class AccountController extends Controller
         
          return back()->with('info',' Update successful.');
          
+    }
+    public function changepassword($id){
+
+        $user = User::find($id);
+        return view('account.changepassword',compact('user'));
     }
 
 }

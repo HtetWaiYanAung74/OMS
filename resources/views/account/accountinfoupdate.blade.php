@@ -103,7 +103,7 @@
                             <input type="submit" name="submit" value="Update" class="btn btn-primary">
                            
 				 				&nbsp;&nbsp;
-                             <input type="sumit" name="cancel" class="btn btn-danger" value="Cancel"/>
+                             <input type="submit" name="cancel" class="btn btn-danger" value="Cancel"/>
                             </div>
 
                             

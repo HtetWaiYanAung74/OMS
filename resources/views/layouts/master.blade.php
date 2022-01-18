@@ -88,8 +88,7 @@
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                          
                                         <a class="btn dropdown-item" tabindex="0" href="{{ route('accountinfo',Auth::user()->id) }}">Account info</a>
-                                        
-                                    
+                                         
                                         <a class="btn dropdown-item" tabindex="0" href="{{ route('logout') }}" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
